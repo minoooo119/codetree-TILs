@@ -23,12 +23,12 @@ int bfs(){
             continue;
         }
         if(x+1<n){
-            m=min(m,a[x+1][y]);
-            if(!visited[x+1][y]&&m>min_mx_num) q.push({m,{x+1,y}});
+            int mm=min(m,a[x+1][y]);
+            if(!visited[x+1][y]&&mm>min_mx_num) q.push({mm,{x+1,y}});
         }
         if(y+1<n){
-            m=min(m,a[x][y+1]);
-            if(!visited[x][y+1]&&m>min_mx_num) q.push({m,{x,y+1}});
+            int mm=min(m,a[x][y+1]);
+            if(!visited[x][y+1]&&mm>min_mx_num) q.push({mm,{x,y+1}});
         }
     }
     return min_mx_num;
