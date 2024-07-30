@@ -16,6 +16,7 @@ int main() {
             dp[i][j]=1;
         }
     }
+    int mxNum=0;
     while(1){
         int change=0;
         for(int i=0;i<n;i++){
@@ -27,21 +28,13 @@ int main() {
                     if(a[i][j]<=a[nx][ny]) continue;
                     if(dp[i][j]>=dp[nx][ny]+1) continue;
                     dp[i][j]=dp[nx][ny]+1;change++;
-                    
+                    mxNum=max(mxNum,dp[i][j]);
                 }
             }
         }
         if(change==0) break;
     }
 
-    int mxNum=0;
-    for(int i=0;i<n;i++){
-        for(int j=0;j<n;j++){
-            // cout<<dp[i][j]<<' ';
-            mxNum=max(mxNum,dp[i][j]);
-        }
-        // cout<<'\n';
-    }
     cout<<mxNum;
     return 0;
 }
