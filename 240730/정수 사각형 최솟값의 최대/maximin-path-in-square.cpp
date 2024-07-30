@@ -14,6 +14,7 @@ int bfs(){
         int y=q.front().second.second;
         // cout<<x<<y<<'\n';
         q.pop();
+        if(m<min_mx_num)continue;
         if(x==n-1&&y==n-1){
             min_mx_num=max(min_mx_num,m);
             continue;
