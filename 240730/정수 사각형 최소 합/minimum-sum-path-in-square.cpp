@@ -26,7 +26,7 @@ int main() {
     for(int i=1;i<n;i++){
         for(int j=n-2;j>=0;j--){
             // cout<<grid[i][j]<<' ';
-            dp[i][j]=max(dp[i-1][j],dp[i][j+1])+grid[i][j];
+            dp[i][j]=min(dp[i-1][j],dp[i][j+1])+grid[i][j];
         }
         // cout<<'\n';
     }
