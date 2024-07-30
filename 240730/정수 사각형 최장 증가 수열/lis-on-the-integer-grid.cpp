@@ -34,6 +34,6 @@ int main() {
         }
         // cout<<'\n';
     }
-
+    cout<<mxNum;
     return 0;
 }
