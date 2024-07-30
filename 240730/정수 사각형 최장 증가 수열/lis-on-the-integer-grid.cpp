@@ -16,26 +16,25 @@ int main() {
             dp[i][j]=1;
         }
     }
-    for(int i=0;i<n;i++){
-        for(int j=0;j<n;j++){
-            for(int k=0;k<4;k++){
-                int nx=i+dx[k];
-                int ny=j+dy[k];
-                if(nx<0||ny<0||nx>=n||ny>=n) continue;
-                if(a[i][j]>a[nx][ny]) dp[i][j]=max(dp[i][j],dp[nx][ny]+1);
+    while(1){
+        int change=0;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                for(int k=0;k<4;k++){
+                    int nx=i+dx[k];
+                    int ny=j+dy[k];
+                    if(nx<0||ny<0||nx>=n||ny>=n) continue;
+                    if(a[i][j]>a[nx][ny]) {
+                        if(dp[i][j]<dp[nx][ny]+1){
+                            dp[i][j]=dp[nx][ny]+1;change++;
+                        }
+                    }
+                }
             }
         }
+        if(change==0) break;
     }
-    for(int i=n-1;i>0;i--){
-        for(int j=n-1;j>0;j--){
-            for(int k=0;k<4;k++){
-                int nx=i+dx[k];
-                int ny=j+dy[k];
-                if(nx<0||ny<0||nx>=n||ny>=n) continue;
-                if(a[i][j]>a[nx][ny]) dp[i][j]=max(dp[i][j],dp[nx][ny]+1);
-            }
-        }
-    }
+
     int mxNum=0;
     for(int i=0;i<n;i++){
         for(int j=0;j<n;j++){
