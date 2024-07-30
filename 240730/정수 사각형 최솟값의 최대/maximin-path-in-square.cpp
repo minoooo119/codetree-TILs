@@ -12,6 +12,7 @@ int bfs(){
     visited[0][0]=true;
     int min_mx_num=-1;
     while(!q.empty()){
+        visited[x][y]=true;
         int m=q.front().first;
         int x=q.front().second.first;
         int y=q.front().second.second;
