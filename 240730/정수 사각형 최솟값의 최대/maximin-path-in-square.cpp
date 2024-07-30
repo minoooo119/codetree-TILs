@@ -9,13 +9,13 @@ int min_num=-1;
 int bfs(){
     queue<pair<int,pair<int,int>>> q;
     q.push({a[0][0],{0,0}});
-    visited[0][0]=true;
+    // visited[0][0]=true;
     int min_mx_num=-1;
     while(!q.empty()){
-        visited[x][y]=true;
         int m=q.front().first;
         int x=q.front().second.first;
         int y=q.front().second.second;
+        visited[x][y]=true;
         // cout<<x<<y<<'\n';
         q.pop();
         if(x==n-1&&y==n-1){
