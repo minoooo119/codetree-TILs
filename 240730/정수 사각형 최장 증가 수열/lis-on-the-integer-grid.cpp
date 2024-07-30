@@ -29,9 +29,11 @@ int main() {
                     int nx=i+dx[k];
                     int ny=j+dy[k];
                     if(nx<0||ny<0||nx>=n||ny>=n) continue;
-                    if(a[i][j]<=a[nx][ny]) continue;
-                    if(dp[i][j]>=dp[nx][ny]+1) continue;
-                    dp[i][j]=dp[nx][ny]+1;change++;
+                    if(a[i][j]>a[nx][ny]){
+                        if(dp[i][j]<dp[nx][ny]+1){
+                            dp[i][j]=dp[nx][ny]+1;change++;
+                        }
+                    }
                     
                 }
             }
