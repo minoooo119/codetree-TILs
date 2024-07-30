@@ -22,8 +22,14 @@ int bfs(){
             min_mx_num=max(min_mx_num,m);
             continue;
         }
-        if(x+1<n&&!visited[x+1][y]) q.push({min(m,a[x+1][y]),{x+1,y}});
-        if(y+1<n&&!visited[x][y+1]) q.push({min(m,a[x][y+1]),{x,y+1}});
+        if(x+1<n){
+            m=min(m,a[x+1][y]);
+            if(!visited[x+1][y]&&m>min_mx_num) q.push({m,{x+1,y}});
+        }
+        if(y+1<n){
+            m=min(m,a[x][y+1]);
+            if(!visited[x][y+1]&&m>min_mx_num) q.push({m,{x,y+1}});
+        }
     }
     return min_mx_num;
 }
