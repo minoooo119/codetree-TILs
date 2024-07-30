@@ -3,10 +3,13 @@
 using namespace std;
 int n;
 int a[101][101];
+bool visited[101][101];
+int min_num=-1;
 
 int bfs(){
     queue<pair<int,pair<int,int>>> q;
     q.push({a[0][0],{0,0}});
+    visited[0][0]=true;
     int min_mx_num=-1;
     while(!q.empty()){
         int m=q.front().first;
@@ -14,16 +17,27 @@ int bfs(){
         int y=q.front().second.second;
         // cout<<x<<y<<'\n';
         q.pop();
-        if(m<min_mx_num)continue;
         if(x==n-1&&y==n-1){
             min_mx_num=max(min_mx_num,m);
             continue;
         }
-        if(x+1<n) q.push({min(m,a[x+1][y]),{x+1,y}});
-        if(y+1<n) q.push({min(m,a[x][y+1]),{x,y+1}});
+        if(x+1<n&&!visited[x+1][y]) q.push({min(m,a[x+1][y]),{x+1,y}});
+        if(y+1<n&&!visited[x][y+1]) q.push({min(m,a[x][y+1]),{x,y+1}});
     }
     return min_mx_num;
 }
+// void dfs(int x, int y, int num){
+//     if(x==n-1&&y==n-1){
+//         min_num=max(min_num,num);
+//         return;
+//     }
+//     if(x+1<n){
+
+//     }
+//     if(y+1<n){
+
+//     }
+// }
 
 int main() {
     // 여기에 코드를 작성해주세요.
