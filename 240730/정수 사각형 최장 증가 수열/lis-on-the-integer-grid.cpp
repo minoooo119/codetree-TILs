@@ -41,9 +41,9 @@ int main() {
     for(int i=0;i<n;i++){
         for(int j=0;j<n;j++){
             mx_num = max(mx_num,dp[i][j]);
-            cout<<dp[i][j]<<' ';
+            // cout<<dp[i][j]<<' ';
         }
-        cout<<'\n';
+        // cout<<'\n';
     }
     cout<<mx_num+1<<"\n";
     return 0;
