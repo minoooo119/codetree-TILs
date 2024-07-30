@@ -32,6 +32,6 @@ int main() {
             m2=min(m2,a[i][j]);
         }
     }
-    cout<<max(m1,m2,m3_1,m3_2)<<'\n';
+    cout<<max(m1,max(m2,max(m3_1,m3_2)))<<'\n';
     return 0;
 }
