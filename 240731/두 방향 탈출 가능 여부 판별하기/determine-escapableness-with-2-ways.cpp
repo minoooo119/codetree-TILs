@@ -12,7 +12,7 @@ bool canGo(int r, int c){
 }
 bool res=false;
 void dfs(int x, int y){
-    if(x==n&&y==m) res=true;
+    if(x==n-1&&y==m-1) res=true;
     int dx[2]={1,0};
     int dy[2]={0,1};
     for(int i=0;i<2;i++){
