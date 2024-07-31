@@ -5,6 +5,7 @@ int n;
 int grid[26][26];
 int visited[26][26];
 bool canGo(int r,int c){
+    if(r<0||c<0||r>=n||c>=n) return false;
     if(grid[r][c]==0||visited[r][c]==1) return false;
     return true;
 }
