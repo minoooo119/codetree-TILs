@@ -47,8 +47,8 @@ int main() {
     for(int i=0;i<m;i++){
         int a,b;
         cin>>a>>b;
-        q.push({a,b});
-        visited[a][b]=1;
+        q.push({a-1,b-1});
+        visited[a-1][b-1]=1;
         num++;
     }
     cout<<BFS();
