@@ -10,7 +10,7 @@ bool CanGo(int x, int y){
     return true;
 }
 queue<pair<int,int>> q;
-int num=1;
+int num=0;
 int BFS(){
     while(!q.empty()){
         int x=q.front().first;
@@ -49,6 +49,7 @@ int main() {
         cin>>a>>b;
         q.push({a,b});
         visited[a][b]=1;
+        num++;
     }
     cout<<BFS();
     return 0;
