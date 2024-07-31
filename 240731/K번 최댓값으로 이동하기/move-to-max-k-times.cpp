@@ -55,18 +55,19 @@ tuple<int,int,int> bfs(int x, int y, int num){
             int ny=y+dy[i];
             if(nx<0||ny<0||nx>=n||ny>=n) continue;
             if(visited[nx][ny]) continue;
-            if(grid[nx][ny]>num)continue;
+            if(grid[nx][ny]>=num)continue;
             visited[nx][ny]=1;
             q.push(make_tuple(grid[nx][ny],nx,ny));
         }
     }
     // cout<<get<0>(max_num)<<'\n';
-    // for(int i=0;i<n;i++){
-    //     for(int j=0;j<n;j++){
-    //         cout<<visited[i][j]<<' ';
-    //     }
-    //     cout<<'\n';
-    // }
+    // cout<<get<1>(max_num)<<' '<<get<2>(max_num)<<'\n';
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            cout<<visited[i][j]<<' ';
+        }
+        cout<<'\n';
+    }
     return max_num;
 }
 int main() {
@@ -87,7 +88,8 @@ int main() {
         init();
         t=bfs(get<1>(t),get<2>(t),get<0>(t));
     }
-    cout<<get<1>(t)<<' '<<get<2>(t)<<'\n';
+    // cout<<get<0>(t)<<'\n';
+    cout<<get<1>(t)+1<<' '<<get<2>(t)+1<<'\n';
     
     return 0;
 }
