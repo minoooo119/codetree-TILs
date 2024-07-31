@@ -16,8 +16,9 @@ int dfs(int x, int y, int c){
         int nx=x+dx[i];
         int ny=y+dy[i];
         if(canGo(nx,ny)){
+            
             visited[nx][ny]=true;
-            return dfs(nx,ny,c+1);
+            c = dfs(nx,ny,c+1);
         }
     }
     return c;
@@ -38,7 +39,8 @@ int main() {
             if(grid[i][j]==1&&visited[i][j]==0){
                 city_num++;
                 visited[i][j]=1;
-                city_people_num.push_back(dfs(i,j,1));
+                int num=dfs(i,j,1);
+                city_people_num.push_back(num);
             }
         }
     }
