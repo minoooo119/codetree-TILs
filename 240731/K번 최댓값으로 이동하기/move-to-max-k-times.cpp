@@ -40,7 +40,7 @@ tuple<int,int,int> bfs(int x, int y, int num){
     queue<tuple<int,int,int>> q;
     visited[x][y]=1;
     q.push(make_tuple(grid[x][y],x,y));
-    tuple<int,int,int> max_num=make_tuple(0,101,101);
+    tuple<int,int,int> max_num=make_tuple(0,x,y);
     while(!q.empty()){
         int val=get<0>(q.front());
         int x=get<1>(q.front());
