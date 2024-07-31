@@ -3,19 +3,18 @@
 using namespace std;
 //K중 하나를 N번 선택하기!!
 
-int n,k;
+int n;
 int res=0;
 vector<int> answer;
 bool isBeautifulNum(){
-    // cout<<"check\n";
-    for(int i=0;i<k;i++){
+    // cout<<'\n';
+    for(int i=0;i<n;i++){
         int num=answer[i];
         // cout<<num<<'\n';
         if(num==1) continue;
         else if(num==2){
             if(i+1>=n) return false;
             if(answer[i+1]!=2) return false;
-            cout<<"?\n";
             i++;
         }
         else if(num==3){
@@ -38,8 +37,11 @@ void Print(){
     cout<<'\n';
 }
 void permutation(int curr_num){
-    if(curr_num==k+1){
-        if(isBeautifulNum()) {Print();res++;}
+    if(curr_num==n+1){
+        if(isBeautifulNum()) {
+            // Print();
+            res++;
+        }
         return;
     }
     for(int i=1;i<=4;i++){
@@ -52,9 +54,10 @@ void permutation(int curr_num){
 int main() {
     // 여기에 코드를 작성해주세요.
     
-    cin>>k;
+    cin>>n;
 
     permutation(1);
+    cout<<res<<'\n';
 
 
     return 0;
