@@ -44,7 +44,7 @@ int main() {
             }
         }
     }
-    cout<<boom_num<<' '<<max_block_num<<'\n';
+    cout<<boom_num<<' '<<max_block_num;
 
     return 0;
 }
