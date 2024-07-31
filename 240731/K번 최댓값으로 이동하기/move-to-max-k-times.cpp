@@ -62,12 +62,12 @@ tuple<int,int,int> bfs(int x, int y, int num){
     }
     // cout<<get<0>(max_num)<<'\n';
     // cout<<get<1>(max_num)<<' '<<get<2>(max_num)<<'\n';
-    for(int i=0;i<n;i++){
-        for(int j=0;j<n;j++){
-            cout<<visited[i][j]<<' ';
-        }
-        cout<<'\n';
-    }
+    // for(int i=0;i<n;i++){
+    //     for(int j=0;j<n;j++){
+    //         cout<<visited[i][j]<<' ';
+    //     }
+    //     cout<<'\n';
+    // }
     return max_num;
 }
 int main() {
