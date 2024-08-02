@@ -6,6 +6,7 @@ int grid[21][21];
 int bomb[21][21];
 int gold[21][21];
 vector<int> temp;
+vector<pair<int,int>> bomb_pos;
 
 void init(){
     for(int i=0;i<n;i++){
@@ -100,10 +101,13 @@ int main() {
     for(int i=0;i<n;i++){
         for(int j=0;j<n;j++){
             cin>>grid[i][j];
-            cnt++;
+            if(grid[i][j]) {
+                bomb_pos.push_back({i,j});
+                cnt++;
+            }
         }
     }
-    backtracking(0,n);
+    backtracking(0,cnt);
     cout<<mx_num<<'\n';
     // for(int i=0;i<n;i++){
     //     for(int j=0;j<n;j++){
