@@ -33,8 +33,8 @@ void bomb_bomb(int r, int c,int seq){
     switch(temp[seq]){
         case 1:
             for(int i=0;i<4;i++){
-                int nx=r+dx[i];
-                int ny=c+dy[i];
+                int nx=r+d1x[i];
+                int ny=c+d1y[i];
                 if(nx<0||ny<0||nx>=n||ny>=n) continue;
                 bomb[nx][ny]=1;
             }
