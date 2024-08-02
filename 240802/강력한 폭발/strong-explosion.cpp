@@ -4,6 +4,7 @@ using namespace std;
 int n;
 int grid[21][21];
 int bomb[21][21];
+int gold[21][21];
 vector<int> temp;
 
 void init(){
@@ -24,8 +25,8 @@ int count(){
 }
 void bomb_bomb(int r, int c,int seq){
     bomb[r][c]=1;
-    int d1x[4]={0,0,0,0};
-    int d1y[4]={2,1,-1,-2};
+    int d1x[4]={2,1,-1,-2};
+    int d1y[4]={0,0,0,0};
     int dx[4]={-1,0,0,1};
     int dy[4]={0,1,-1,0};
     int ddx[4]={-1,-1,1,1};
@@ -74,7 +75,15 @@ int func(){
 int mx_num=0;
 void backtracking(int num,int cnt){
     if(num==cnt){
-        mx_num=max(func(),mx_num);
+        int res=func();
+        if(res>mx_num){
+            mx_num=res;
+            for(int i=0;i<n;i++){
+                for(int j=0;j<n;j++){
+                    gold[i][j]=bomb[i][j];
+                }
+            }
+        }
         return;
     }
     for(int i=1;i<=3;i++){
@@ -96,6 +105,12 @@ int main() {
     }
     backtracking(0,3);
     cout<<mx_num<<'\n';
+    // for(int i=0;i<n;i++){
+    //     for(int j=0;j<n;j++){
+    //         cout<<gold[i][j]<<' ';
+    //     }
+    //     cout<<'\n';
+    // }
 
     return 0;
 }
