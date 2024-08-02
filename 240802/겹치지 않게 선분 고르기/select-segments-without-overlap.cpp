@@ -44,10 +44,12 @@ void FindMaxSegments(int cnt) {
 	}
     
 	selected_segs.push_back(segments[cnt]);
+    // 현재 선분을 선택하는 경우:
 	FindMaxSegments(cnt + 1);
 	selected_segs.pop_back();
     
 	FindMaxSegments(cnt + 1);
+    // 현재 인덱스 cnt의 선분을 선택하지 않고, 다음 인덱스 cnt + 1에 대해 재귀 호출을 합니다.
 }
 
 int main() {
