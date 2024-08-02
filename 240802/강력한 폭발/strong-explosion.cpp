@@ -24,14 +24,19 @@ int count(){
 }
 void bomb_bomb(int r, int c,int seq){
     bomb[r][c]=1;
+    int d1x[4]={0,0,0,0};
+    int d1y[4]={2,1,-1,-2};
     int dx[4]={-1,0,0,1};
     int dy[4]={0,1,-1,0};
     int ddx[4]={-1,-1,1,1};
     int ddy[4]={1,-1,1,-1};
     switch(temp[seq]){
         case 1:
-            for(int i=0;i<n;i++){
-                bomb[i][c]=1;
+            for(int i=0;i<4;i++){
+                int nx=r+dx[i];
+                int ny=c+dy[i];
+                if(nx<0||ny<0||nx>=n||ny>=n) continue;
+                bomb[nx][ny]=1;
             }
             break;
         case 2:
