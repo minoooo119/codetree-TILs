@@ -103,7 +103,7 @@ int main() {
             cnt++;
         }
     }
-    backtracking(0,3);
+    backtracking(0,n);
     cout<<mx_num<<'\n';
     // for(int i=0;i<n;i++){
     //     for(int j=0;j<n;j++){
