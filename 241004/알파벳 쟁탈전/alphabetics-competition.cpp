@@ -3,61 +3,62 @@
 #include <vector>
 using namespace std;
 
-int N, K;
-vector<tuple<char, int, int>> conditions;  // 조건 (S 또는 D, 학생 a, 학생 b)
+// 학생들의 배치가 주어진 조건을 만족하는지 확인하는 함수
+bool isValid(const vector<char>& assignment, const vector<tuple<char, int, int>>& conditions) {
+    for (const auto& condition : conditions) {
+        char c;
+        int a, b;
+        tie(c, a, b) = condition;
 
-// 재귀적으로 가능한 모든 배치를 확인하는 함수
-int solve(vector<char>& assignment, int student) {
-    // 모든 학생의 배치가 완료된 경우
-    if (student == N) {
-        // 조건을 전부 확인
-        for (auto& condition : conditions) {
-            char type;
-            int a, b;
-            tie(type, a, b) = condition;
-
-            // 동일(S) 조건
-            if (type == 'S' && assignment[a] != assignment[b]) {
-                return 0;  // 조건을 만족하지 않으면 이 배치는 실패
-            }
-            // 다름(D) 조건
-            if (type == 'D' && assignment[a] == assignment[b]) {
-                return 0;  // 조건을 만족하지 않으면 이 배치는 실패
-            }
+        // 동일(S) 조건: a번 학생과 b번 학생이 같은 문자를 가져야 함
+        if (c == 'S' && assignment[a] != assignment[b]) {
+            return false;
         }
-        return 1;  // 모든 조건을 만족했으면 1을 반환 (성공적인 배치)
-    }
 
-    // 세 가지 문자(A, B, C)를 할당
-    int result = 0;
-    for (char c : {'A', 'B', 'C'}) {
-        assignment[student] = c;
-        result += solve(assignment, student + 1);  // 다음 학생으로 진행
+        // 다름(D) 조건: a번 학생과 b번 학생이 다른 문자를 가져야 함
+        if (c == 'D' && assignment[a] == assignment[b]) {
+            return false;
+        }
     }
-
-    return result;
+    return true;
 }
 
 int main() {
+    int N, K;
     cin >> N >> K;
 
-    // 조건 입력받기
+    vector<tuple<char, int, int>> conditions(K);
+
+    // 조건 입력
     for (int i = 0; i < K; i++) {
         char c;
         int a, b;
         cin >> c >> a >> b;
-        a--; b--;  // 0-based 인덱스 처리
-        conditions.push_back({c, a, b});
+        conditions[i] = {c, a - 1, b - 1};  // 0-based 인덱스
     }
 
-    // 각 학생의 문자 배치 (N명의 학생에 대해 할당할 공간을 만듦)
-    vector<char> assignment(N);
+    int count = 0;
 
-    // 가능한 배치 수를 재귀적으로 계산
-    int result = solve(assignment, 0);
+    // 모든 학생의 배치를 브루트포스로 시도 (3^N 가지 경우)
+    vector<char> assignment(N);  // 학생들의 문자 배치
+
+    // 3^N 번 반복 (학생들에게 A, B, C 중 하나를 배정하는 경우)
+    for (int i = 0; i < pow(3, N); i++) {
+        int num = i;
+        // 각 학생에게 'A', 'B', 'C' 배정
+        for (int j = 0; j < N; j++) {
+            assignment[j] = 'A' + (num % 3);
+            num /= 3;
+        }
+
+        // 조건을 만족하는지 확인
+        if (isValid(assignment, conditions)) {
+            count++;
+        }
+    }
 
     // 결과 출력
-    cout << result << endl;
+    cout << count << endl;
 
     return 0;
 }
