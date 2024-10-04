@@ -6,7 +6,8 @@ priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> q;
 int res=0;
 int dx[2]={-1,1};
 set<int> s;
-void bfs(){
+void bfs(int target){
+    int num=0;
     while(!q.empty()){
         int pos=q.top().second;
         int val=q.top().first;
@@ -14,7 +15,7 @@ void bfs(){
         if(val!=0)
             res+=val;
         q.pop();
-        if(--k==-n)return;
+        if(++num==target)return;
         for(int i=0;i<2;i++){
             int nx=pos+dx[i];
             if(nx<-100000000||nx>100000000) continue;
@@ -33,7 +34,7 @@ int main() {
         cin>>pos;
         q.push({0,pos});
     }
-    bfs();
+    bfs(n+k);
     cout<<res<<'\n';
 
 
