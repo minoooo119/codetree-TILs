@@ -17,7 +17,7 @@ void bfs(){
         if(--k==-n)return;
         for(int i=0;i<2;i++){
             int nx=pos+dx[i];
-            if(nx<-100000000||nx>200000000) continue;
+            if(nx<-100000000||nx>100000000) continue;
             if(++m[nx]>=2){
                 m[nx]--;
                 continue;
