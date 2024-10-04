@@ -5,7 +5,7 @@ int n,k;
 priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> q;
 int res=0;
 int dx[2]={-1,1};
-map<int,int> m;
+set<int> s;
 void bfs(){
     while(!q.empty()){
         int pos=q.top().second;
@@ -18,11 +18,8 @@ void bfs(){
         for(int i=0;i<2;i++){
             int nx=pos+dx[i];
             if(nx<-100000000||nx>100000000) continue;
-            if(++m[nx]>=2){
-                m[nx]--;
-                continue;
-            }
-            m[nx]=1;
+            if(s.find(nx)!=s.end()) continue;
+            s.insert(nx);
             q.push({val+1,nx});
         }
     }
