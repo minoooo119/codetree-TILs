@@ -37,7 +37,7 @@ int main() {
         q.push({0,pos+100000000});
     }
     bfs();
-    cout<<"res: "<<res<<'\n';
+    cout<<res<<'\n';
 
 
     return 0;
