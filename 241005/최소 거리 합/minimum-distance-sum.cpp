@@ -10,14 +10,14 @@ void bfs(){
     while(!q.empty()){
         int pos=q.top().second;
         int val=q.top().first;
-        // cout<<pos-100000000<<'\n';
+        // cout<<pos<<'\n';
         if(val!=0)
             res+=val;
         q.pop();
         if(--k==-n)return;
         for(int i=0;i<2;i++){
             int nx=pos+dx[i];
-            if(nx<0||nx>=200000000) continue;
+            if(nx<-100000000||nx>200000000) continue;
             if(++m[nx]>=2){
                 m[nx]--;
                 continue;
@@ -34,7 +34,7 @@ int main() {
     for(int i=0;i<n;i++){
         int pos;
         cin>>pos;
-        q.push({0,pos+100000000});
+        q.push({0,pos});
     }
     bfs();
     cout<<res<<'\n';
