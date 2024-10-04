@@ -33,6 +33,7 @@ int main() {
         int pos;
         cin>>pos;
         q.push({0,pos});
+        s.insert(pos);
     }
     bfs(n+k);
     cout<<res<<'\n';
